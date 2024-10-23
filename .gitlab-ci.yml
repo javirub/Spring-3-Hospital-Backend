@@ -1,29 +1,10 @@
 stages:
-  - build
   - deploy
 
 variables:
   POSTGRES_DB: mydatabase
   POSTGRES_USER: myuser
   POSTGRES_PASSWORD: secret
-
-build:
-  stage: build
-  image: docker:latest
-  services:
-    - docker:dind
-  cache:
-    key: $CI_COMMIT_REF_SLUG
-    paths:
-      - .m2/repository
-  script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login hub.laberit.com -u "$CI_REGISTRY_USER" --password-stdin
-    - docker build -t hub.laberit.com/sina/bootcamp-backend/m-dulo-5/my-awesome-final-project -f Dockerfile .
-    - docker push hub.laberit.com/sina/bootcamp-backend/m-dulo-5/my-awesome-final-project
-  tags:
-    - bootcamp
-  only:
-    - dev
 
 deploy:
   stage: deploy
@@ -34,4 +15,4 @@ deploy:
   tags:
     - bootcamp
   only:
-    - dev
+    - main
