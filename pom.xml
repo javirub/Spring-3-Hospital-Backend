@@ -81,6 +81,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.laberit.sina.bootcamp.extra</groupId>
+			<artifactId>authenticator-spring-autoconfigurator</artifactId>
+			<version>0.0.1-DRAFT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
